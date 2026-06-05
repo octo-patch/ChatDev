@@ -36,7 +36,7 @@ from utils.token_tracker import TokenTracker, TokenUsage
 def _make_config(
     *,
     provider: str = "minimax",
-    name: str = "MiniMax-M2.7",
+    name: str = "MiniMax-M3",
     base_url: str = "",
     api_key: str = "",
     params: Optional[Dict[str, Any]] = None,
@@ -105,6 +105,11 @@ class TestMiniMaxProviderInit:
         config = _make_config(name="MiniMax-M2.7-highspeed")
         provider = MiniMaxProvider(config)
         assert provider.model_name == "MiniMax-M2.7-highspeed"
+
+    def test_default_model_is_m3(self):
+        config = _make_config()
+        provider = MiniMaxProvider(config)
+        assert provider.model_name == "MiniMax-M3"
 
 
 # ---------------------------------------------------------------------------
@@ -324,11 +329,11 @@ class TestChatPayload:
     """Test payload construction for MiniMax."""
 
     def test_model_name_in_payload(self):
-        config = _make_config(name="MiniMax-M2.7")
+        config = _make_config(name="MiniMax-M3")
         provider = MiniMaxProvider(config)
         conversation = [Message(role=MessageRole.USER, content="hello")]
         payload = provider._build_chat_payload(conversation, None, {})
-        assert payload["model"] == "MiniMax-M2.7"
+        assert payload["model"] == "MiniMax-M3"
 
     def test_tool_specs_in_payload(self):
         config = _make_config()
@@ -448,7 +453,7 @@ class TestMiniMaxIntegration:
     def test_simple_completion(self):
         config = _make_config(
             api_key=os.environ["MINIMAX_API_KEY"],
-            name="MiniMax-M2.7",
+            name="MiniMax-M3",
         )
         provider = MiniMaxProvider(config)
         client = provider.create_client()
@@ -475,7 +480,7 @@ class TestMiniMaxIntegration:
     def test_token_usage_tracked(self):
         config = _make_config(
             api_key=os.environ["MINIMAX_API_KEY"],
-            name="MiniMax-M2.7-highspeed",
+            name="MiniMax-M3",
         )
         tracker = TokenTracker(workflow_id="integ-test")
         config.token_tracker = tracker

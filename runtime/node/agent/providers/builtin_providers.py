@@ -32,5 +32,5 @@ ProviderRegistry.register(
     "minimax",
     MiniMaxProvider,
     label="MiniMax",
-    summary="MiniMax models (M2.7, M2.5) via OpenAI-compatible API",
+    summary="MiniMax models (M3, M2.7, M2.7-highspeed) via OpenAI-compatible API",
 )

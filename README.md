@@ -135,7 +135,7 @@ See our paper in [Multi-Agent Collaboration via Evolving Orchestration](https://
 |----------|------------------|--------|---------------------|
 | OpenAI | `openai` | GPT-4o, o1, etc. | `OPENAI_API_KEY` |
 | Google Gemini | `gemini` | Gemini 2.5, etc. | `GOOGLE_API_KEY` |
-| [MiniMax](https://www.minimaxi.com/) | `minimax` | MiniMax-M2.7, MiniMax-M2.7-highspeed, MiniMax-M2.5, MiniMax-M2.5-highspeed (204K context) | `MINIMAX_API_KEY` |
+| [MiniMax](https://www.minimaxi.com/) | `minimax` | MiniMax-M3 (default, 512K context, 128K max output, image input), MiniMax-M2.7, MiniMax-M2.7-highspeed | `MINIMAX_API_KEY` |
 
 To use MiniMax models, set `MINIMAX_API_KEY` in your `.env` file and configure the agent node with `provider: minimax`.
 

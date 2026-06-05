@@ -1,8 +1,10 @@
 """MiniMax provider implementation.
 
 MiniMax models are accessed via an OpenAI-compatible Chat Completions API.
-Supported models include MiniMax-M2.7, MiniMax-M2.7-highspeed,
-MiniMax-M2.5, and MiniMax-M2.5-highspeed, all with 204K context windows.
+Supported models:
+- MiniMax-M3 (default): 512K context, 128K max output, supports image input
+- MiniMax-M2.7: previous-generation model
+- MiniMax-M2.7-highspeed: previous-generation low-latency variant
 
 API endpoint: https://api.minimax.io/v1
 """
